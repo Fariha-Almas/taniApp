@@ -1,10 +1,8 @@
 import React from "react";
 
-export default function WheatherSider({ data }) {
+export default function WheatherSider({ data, description }) {
   const temp = parseInt(data?.main?.temp);
   // console.log("parsont", temp);
-  // console.log("data", data?.weather[0]?.description);
-  console.log("data 1 obj", data);
   return (
     <div style={{ backgroundColor: "coral", padding: "50px" }}>
       <div>
@@ -13,7 +11,7 @@ export default function WheatherSider({ data }) {
       </div>
       <div>
         <img src="http://openweathermap.org/img/wn/01n@2x.png" />
-        {/* <p>{data?.weather[0]?.description}</p> */}
+        <p>{description}</p>
       </div>
     </div>
   );

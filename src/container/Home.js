@@ -14,6 +14,7 @@ export default function Home() {
         alignItems: "center",
       }}
     >
+      home here
       <Card />
     </div>
   );

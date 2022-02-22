@@ -7,6 +7,7 @@ import WheatherSider from "./WheatherSider";
 export default function Card() {
   const [response, setResponse] = useState({});
   const [search, setSearch] = useState("paris");
+
   useEffect(() => {
     axios
       .post(
@@ -16,11 +17,13 @@ export default function Card() {
         setResponse(res.data);
         console.log("res", res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("error", err));
   }, [search]);
+
+  const { weather = [] } = response;
+  const { description = "" } = weather[0] || [];
   console.log("response", response.name);
-  console.log("0 index", response?.weather[0]?.description);
-  console.log("search", search);
+  console.log("0 index", description);
   return (
     <div>
       <Header />
@@ -31,7 +34,7 @@ export default function Card() {
           backgroundColor: "lightblue",
         }}
       >
-        <WheatherSider data={response} />
+        <WheatherSider data={response} description={description} />
         <WheatherInfo setSearch={setSearch} search={search} />
       </div>
     </div>
